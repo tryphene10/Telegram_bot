@@ -1,0 +1,16 @@
+{
+  "release": "0.1.0-rc.1",
+  "node": "22.23.0",
+  "pnpm": "10.15.1",
+  "postgres": "17.6-alpine",
+  "redis": "7.4.5-alpine",
+  "dockerDesktopMinimum": "4.50.0",
+  "dockerEngineTested": "29.7.2",
+  "dockerComposeTested": "5.5.1",
+  "gitTested": "2.54.0.windows.1",
+  "chromiumAutomation": "playwright-1.63.0",
+  "localRuntime": {
+    "kind": "ollama",
+    "minimumVersion": "0.12.0"
+  }
+}

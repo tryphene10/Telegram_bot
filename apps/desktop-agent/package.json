@@ -1,0 +1,33 @@
+{
+  "name": "@arcc/desktop-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@arcc/agents": "workspace:*",
+    "@arcc/ai": "workspace:*",
+    "@arcc/database": "workspace:*",
+    "@arcc/policies": "workspace:*",
+    "@arcc/protocol": "workspace:*",
+    "@arcc/scheduler": "workspace:*",
+    "@arcc/security": "workspace:*",
+    "@arcc/tools": "workspace:*",
+    "pg": "8.16.3",
+    "playwright-core": "1.63.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "@types/pg": "8.15.5",
+    "tsx": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}

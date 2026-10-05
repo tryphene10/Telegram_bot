@@ -1,0 +1,51 @@
+{
+  "name": "ai-remote-command-center",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local-first command center for policy-controlled AI agents.",
+  "license": "UNLICENSED",
+  "packageManager": "pnpm@10.15.1",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "build": "pnpm -r --if-present build",
+    "clean": "pnpm -r --if-present clean",
+    "dev:api": "pnpm --filter @arcc/api dev",
+    "dev:telegram": "pnpm --filter @arcc/telegram-bot dev",
+    "dev:agent": "pnpm --filter @arcc/desktop-agent dev",
+    "dev:web": "pnpm --filter @arcc/web-dashboard dev",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint . && node scripts/check-boundaries.mjs",
+    "test": "pnpm -r --if-present test",
+    "test:database": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-database.ps1",
+    "test:browser": "pnpm --filter @arcc/desktop-agent build && node scripts/test-browser.mjs",
+    "test:computer-use": "pnpm --filter @arcc/desktop-agent build && node scripts/test-computer-use.mjs",
+    "test:adaptive-computer-use": "pnpm build && node scripts/test-adaptive-computer-use.mjs",
+    "test:knowledge": "pnpm build && node scripts/test-knowledge.mjs",
+    "computer:status": "pnpm --filter @arcc/desktop-agent build && node apps/desktop-agent/dist/emergency-stop-cli.js status",
+    "computer:stop": "pnpm --filter @arcc/desktop-agent build && node apps/desktop-agent/dist/emergency-stop-cli.js stop",
+    "computer:reset": "pnpm --filter @arcc/desktop-agent build && node apps/desktop-agent/dist/emergency-stop-cli.js reset",
+    "runtime:setup": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows/setup.ps1",
+    "runtime:start": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows/start.ps1",
+    "runtime:stop": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows/stop.ps1",
+    "runtime:status": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows/status.ps1",
+    "runtime:doctor": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows/doctor.ps1",
+    "runtime:backup": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows/backup.ps1",
+    "runtime:benchmark": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows/benchmark.ps1",
+    "runtime:endurance": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows/endurance.ps1",
+    "package:windows": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows/package.ps1",
+    "typecheck": "pnpm --filter @arcc/protocol build && pnpm --filter @arcc/security build && pnpm --filter @arcc/policies build && pnpm --filter @arcc/tools build && pnpm -r --if-present typecheck",
+    "security:scan": "node scripts/security-scan.mjs",
+    "test:windows-scripts": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-windows-scripts.ps1",
+    "test:runtime-windows": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-runtime-windows.ps1",
+    "verify": "pnpm format:check && pnpm lint && pnpm security:scan && pnpm test:windows-scripts && pnpm typecheck && pnpm test && pnpm build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.10.0",
+    "prettier": "^3.9.6",
+    "typescript-eslint": "^8.70.0"
+  }
+}
