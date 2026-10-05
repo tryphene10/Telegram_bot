@@ -2,9 +2,6 @@
 
 Plateforme personnelle Windows, local-first, permettant de piloter des missions d'agents IA depuis Telegram sans donner au bot un acces direct au terminal.
 
-## Etat
-
-Le developpement suit strictement [PHASES.md](./PHASES.md). Une seule phase est active a la fois.
 
 ## Prerequis
 
